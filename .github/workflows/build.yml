@@ -28,26 +28,31 @@ jobs:
           cmake -B build -S . -G "Visual Studio 18 2026" -A x64
 
       - name: Build Application Binary
-          run: |
-            cmake --build build --config Release --parallel
+        run: |
+          cmake --build build --config Release --parallel
 
-      - name: Bundle Qt Runtime DLLs (windeployqt)
+      - name: Bundle Qt Runtime DLLs
         shell: pwsh
         run: |
           $ExePath = "build/Release/MDReader.exe"
+          if (-not (Test-Path $ExePath)) {
+              Write-Error "MDReader.exe was not found at $ExePath"
+              exit 1
+          }
           windeployqt --release --no-translations --compiler-runtime $ExePath
 
       - name: Install Inno Setup Compiler
         run: |
           choco install innosetup -y --no-progress
 
-      - name: Build Setup Wizard Installer (ISCC)
+      - name: Build Setup Wizard Installer
         shell: pwsh
         run: |
           & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss
 
-      - name: Upload MD Reader Setup Installer (.exe)
+      - name: Upload MD Reader Setup Installer
         uses: actions/upload-artifact@v4
         with:
           name: MDReader-Setup-Installer
           path: Output/MDReader-Setup-v1.0.exe
+          if-no-files-found: error
