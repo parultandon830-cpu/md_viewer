@@ -1,3 +1,8 @@
+#ifdef Q_OS_WIN
+#include <windows.h>
+#include <shlobj.h>
+#endif
+
 #include <QApplication>
 #include <QMainWindow>
 #include <QWidget>
