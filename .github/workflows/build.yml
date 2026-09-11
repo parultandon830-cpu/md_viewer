@@ -9,7 +9,6 @@ steps:
       host: 'windows'
       target: 'desktop'
       arch: 'win64_msvc2019_64'
-      modules: 'qtprintsupport'
 
   - name: Set up MSVC Developer Prompt
     uses: ilammy/msvc-dev-cmd@v1
@@ -23,6 +22,7 @@ steps:
       cmake --build build --config Release
 
   - name: Bundle Qt Runtime DLLs (windeployqt)
+    shell: pwsh
     run: |
       $ExePath = "build/Release/MDReader.exe"
       windeployqt --release --no-translations --compiler-runtime $ExePath
@@ -32,6 +32,7 @@ steps:
       choco install innosetup -y --no-progress
 
   - name: Build Setup Wizard Installer (ISCC)
+    shell: pwsh
     run: |
       & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss
 
