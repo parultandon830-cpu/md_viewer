@@ -20,7 +20,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Widgets PrintSup
 # Create the Windows GUI executable
 # WIN32 prevents a console window from appearing
 add_executable(MDReader WIN32
-    main.cpp
+    main.c++
 )
 
 # Link Qt libraries
