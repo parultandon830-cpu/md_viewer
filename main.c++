@@ -2632,10 +2632,6 @@ private:
 };
 
 int main(int argc, char *argv[]) {
-#ifdef Q_OS_WIN
-    SetCurrentProcessExplicitAppUserModelID(L"gemini.mdreader.cpp.application");
-#endif
-
     QApplication::setHighDpiScaleFactorRoundingPolicy(
         Qt::HighDpiScaleFactorRoundingPolicy::PassThrough
     );
