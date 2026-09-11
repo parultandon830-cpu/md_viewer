@@ -45,20 +45,13 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 [Tasks]
 
 ; Desktop shortcut
-Name: "desktopicon";
-Description: "{cm:CreateDesktopIcon}";
-GroupDescription: "{cm:AdditionalIcons}";
-Flags: unchecked
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 ; Markdown file association
-Name: "associate_md";
-Description: "Associate .md files with MD Reader (Make Default)";
-GroupDescription: "File Associations:"
+Name: "associate_md"; Description: "Associate .md files with MD Reader (Make Default)"; GroupDescription: "File Associations:"
 
 ; Right-click context menu
-Name: "context_menu";
-Description: "Add 'Open with MD Reader' to right-click context menu";
-GroupDescription: "Windows Shell Integration:"
+Name: "context_menu"; Description: "Add 'Open with MD Reader' to right-click context menu"; GroupDescription: "Windows Shell Integration:"
 
 
 ; ============================================================
